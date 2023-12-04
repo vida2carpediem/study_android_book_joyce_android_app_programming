@@ -1,0 +1,423 @@
+// 2.1
+println("Hello World")
+
+// 2.2.1
+val pi : Double = 3.14
+
+val name = "gil-dong"
+
+//val pi = 3.14
+//pi = 3.14592
+
+var age = 21
+println(age)
+age = 25
+println(age)
+
+// 2.2.2
+val numByte : Byte = 100
+val numShort : Short = 20
+val numInt : Int = 1
+val numLong : Long = 2L
+
+val numDouble : Double = 3.2
+val numFloat : Float = 3.2f
+
+val char1 : Char = 'H'
+
+val string1 : String = "Hi, This is String"
+
+val isTrue : Boolean = true
+
+val stringArray : Array<String> = arrayOf("apple", "banana", "grape")
+val intArray = arrayOf(1, 2, 3)
+
+println(stringArray[0])
+println(intArray[2])
+
+val score = 100
+val scoreString = score.toString()
+val scoreDouble = score.toDouble()
+
+println(scoreDouble)
+
+// 2.2.3
+fun printAge(age : Int) {
+    println(age)
+}
+
+printAge(15)
+
+fun addNum(a : Int, b : Int) : Int {
+    return a + b
+}
+
+println(addNum(200, 400))
+
+fun minusNum(a : Int, b : Int) = a - b
+
+println(minusNum(minusNum(1000, 200), 100))
+
+// 2.2.4
+val price = 3000
+val tax = 300
+
+val originalPrice = "The original price is $price"
+val totalPrice = "The total price is ${price + tax}"
+
+println(originalPrice)
+println(totalPrice)
+
+// 2.3
+// 2.3.1
+val numRange : IntRange = 1..5
+
+println(numRange.contains(3))
+println(numRange.contains(10))
+
+val charRange : CharRange = 'a'..'e'
+
+println(charRange.contains('b'))
+println(charRange.contains('z'))
+
+// 2.3.2
+for(i in 1..5) {
+    println(i)
+}
+
+for(i in 5 downTo 1) {
+    println(i)
+}
+
+for(i in 1..10 step 2) {
+    println(i)
+}
+
+val students = arrayOf("jun-gi", "jun-su", "si-u", "yeon_seo", "jun-seo")
+
+for(name in students) {
+    println(name)
+}
+
+for((index, name) in students.withIndex()) {
+    println("Index : $index Name : $name")
+}
+
+// 2.3.3
+var num = 1
+
+while (num < 5) {
+    println(num)
+    num++
+}
+
+num = 1
+do {
+    num++
+    println(num)
+} while (num < 5)
+
+// 2.3.4
+var examScore = 60
+var isPass = false
+
+if (examScore > 80) {
+    isPass = true
+}
+
+println("시험 결과 : $isPass")
+
+examScore = 99
+if (examScore == 100) {
+    println("만점이네요.")
+} else {
+    println("만점은 아니에요.")
+}
+
+val myAge = 40
+val isAdult = myAge > 30
+
+println("성인 여부 : $isAdult")
+
+// 2.3.5
+val weather = 15
+when (weather) {
+    -20 -> { println("매우 추운 날씨") }
+    11, 12, 13, 14 -> { println("쌀쌀한 날씨") }
+    in 15..26 -> { println("활동하기 좋은 날씨") }
+
+    !in -30..50 -> { println("잘못된 값입니다. -30 ~ 50 가운데 값을 적어주세요.") }
+    else -> { println("잘 모르겠는 값") }
+}
+
+val essayScore = 95
+val grade = when (essayScore) {
+    in 0..40 -> "D"
+    in 41..70 -> "C"
+    in 71..90 -> "B"
+    else -> "A"
+}
+println("에세이 학점 : $grade")
+
+// 2.4
+// 2.4.1
+val numImmutableList = listOf(1, 2, 3)
+//numList[0] = 1
+
+val numMutableList = mutableListOf(1, 2, 3)
+numMutableList[0] = 100
+
+println(numMutableList)
+println(numMutableList[0])
+
+println(numMutableList.contains(1))
+println(numMutableList.contains(2))
+
+// 2.4.2
+val immutableSet = setOf(1, 1, 2, 2, 2, 3, 3)
+println(immutableSet)
+
+val mutableSet = mutableSetOf(1, 2, 3, 3, 3, 3)
+mutableSet.add(100)
+mutableSet.remove(1)
+mutableSet.remove(200)
+
+println(mutableSet)
+println(mutableSet.contains(1))
+
+// 2.4.3
+val immutableMap = mapOf("name" to "junsu", "age" to 13, "age" to 15, "height" to 160)
+println(immutableMap)
+
+val mutableMap = mutableMapOf("돈까스" to "일식", "짜장면" to "중식", "김치" to "중식")
+mutableMap.put("막국수", "한식")
+mutableMap.remove("돈까스")
+mutableMap.replace("김치", "한식")
+println(mutableMap)
+
+// 2.5
+// 2.5.1
+//class Car
+
+class Car(val color : String)
+
+val car = Car("red")
+println("My car color is ${car.color}")
+
+// 2.5.2
+//class Person constructor(name : String) {}
+//class Person(name : String) {}
+//class Person(val name : String) {}
+//class Person {
+//    constructor(age : Int) {
+//        println("I'm $age years old")
+//    }
+//}
+//class Person(name : String) {
+//    constructor(name : String, age : Int) : this(name) {
+//        println("I'm $age years old")
+//    }
+//}
+class Person(name : String) {
+    val name: String
+
+    init {
+        if (name.isEmpty()) {
+            throw IllegalArgumentException("이름이 없어요.")
+        }
+        this.name = name
+    }
+}
+
+//val newPserson = Person("")
+val newPserson = Person("yeon-seo")
+
+// 2.5.3
+open class Flower {
+    open fun waterFlower() {
+        println("wather flower")
+    }
+}
+
+class Rose : Flower() {
+    override fun waterFlower() {
+        super.waterFlower()
+        println("Rose is happy now")
+    }
+}
+
+val rose = Rose()
+rose.waterFlower()
+
+open class Flower2(val name : String) {}
+class Rose2(name : String, color : String) : Flower2(name) {}
+
+// 2.5.4
+
+// 2.5.5
+class Dinner {
+    companion object {
+        val MENU = "pasta"
+        fun eatDinner() {
+            println("$MENU is yummy!")
+        }
+    }
+}
+
+println(Dinner.Companion.MENU)
+println(Dinner.MENU)
+Dinner.eatDinner()
+
+// 2.5.5
+abstract class Game {
+    fun startGame() {
+        println("게임을 시작했습니다.")
+    }
+
+    abstract fun printName()
+}
+
+class Overwatch : Game() {
+    override fun printName() {
+        println("오버워치입니다.")
+    }
+}
+
+val overwatch = Overwatch()
+overwatch.startGame()
+overwatch.printName()
+
+// 2.5.7
+data class Memo(val title : String, val content : String, var isDone : Boolean)
+var memo1 = Memo("마트 가기", "계란, 우유, 빵", false)
+var memo2 = memo1.copy(content = "칫솔, 과자")
+
+println(memo1.toString())
+println(memo2.toString())
+
+// 2.6
+// 2.6.1 ~ 3
+interface Car2 {
+    abstract fun drive()
+    fun stop()
+    fun destory() = println("차가 파괴되었습니다.")
+}
+
+class Ferrari : Car2 {
+    override fun drive() {
+        println("페라리가 달립니다.")
+    }
+
+    override fun stop() {
+        println("페라리가 멈춥니다.")
+    }
+}
+
+val myFerrari = Ferrari()
+
+myFerrari.drive()
+myFerrari.stop()
+myFerrari.destory()
+
+// 2.6.4 ~ 5
+interface Animal {
+    fun breath()
+    fun eat()
+}
+
+interface Human {
+    fun think()
+}
+
+open class Name(val name : String) {
+    fun printName() {
+        println("제 이름은 $name")
+    }
+}
+
+class Korean(name : String) : Name(name), Animal, Human {
+    override fun breath() {
+        println("후-하 후-하")
+    }
+
+    override fun eat() {
+        println("한식 먹기")
+    }
+
+    override fun think() {
+        println("생각하기")
+    }
+}
+
+val joyce = Korean("정아")
+joyce.breath()
+joyce.printName()
+
+// 2.7
+// 2.7.1
+var myName : String? = null
+myName = "Joyce"
+//println(myName.reversed())
+
+// 2.7.2
+fun reverseName(name : String?) : String? {
+    return name?.reversed()
+}
+
+println(reverseName("joyce"))
+println(reverseName(null))
+
+// 2.7.3
+fun reverseName2(name : String?) : String {
+    return name?.reversed() ?: "이름을 확인해주세요."
+}
+
+println(reverseName2("joyce"))
+println(reverseName2(null))
+
+// 2.7.4
+fun reverseName3(name : String?) : String {
+    return name!!.reversed()
+}
+
+println(reverseName3("joyce"))
+//println(reverseName3(null))
+
+// 2.7.5
+lateinit var lunch : String
+lunch = "waffle"
+
+println(lunch)
+
+val lazyBear : String by lazy {
+    println("곰이 일어났습니다.")
+    "bear"
+}
+
+println(lazyBear)
+println(lazyBear)
+
+// 2.8
+val sayHello = fun() { println("안녕하세요.") }
+sayHello()
+
+// 2.8.1
+val squareNum : (Int) -> (Int) = { number -> number * number }
+println(squareNum(12))
+
+val squareNum2 = { number : Int -> number * number }
+
+val squareNum3 : (Int) -> Int = { it * it }
+
+// 2.8.2
+fun invokeLambda(lambda : (Int) -> Boolean) : Boolean {
+    return lambda(5)
+}
+
+val paramLambda : (Int) -> Boolean = { num -> num == 10 }
+println(invokeLambda(paramLambda))
+
+invokeLambda({num -> num == 10})
+invokeLambda({it == 10})
+invokeLambda() {it == 10}
+invokeLambda{it == 10}

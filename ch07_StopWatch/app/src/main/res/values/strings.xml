@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ch07_StopWatch</string>
+    <string name="start">시작</string>
+    <string name="init">초기화</string>
+</resources>
